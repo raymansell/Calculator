@@ -1,0 +1,1 @@
+Vanilla javaScript calculator project.
