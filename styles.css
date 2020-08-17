@@ -14,6 +14,7 @@ body {
 }
 
 #wrapper {
+    margin-top: 7%;
     position: relative;
     height: 100%;
     width: 412px;
@@ -58,8 +59,6 @@ body {
     width: 300px;
     height: 120px;
     margin-bottom: 30px;
-    /* border: solid 2px;
-    border-color: rgb(98, 114, 98); */
     box-shadow: inset 0px 6px 2px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     background: #eaeed7;
@@ -70,6 +69,7 @@ body {
     padding: 0.3rem;
     padding-top: 0.7rem;
     height: 3rem;
+    color: rgb(112, 112, 112);
     text-align: right;
     word-wrap: break-word;
 }
@@ -111,7 +111,6 @@ button{
     font-weight: bold;
     color: #eaeed7;
     margin: 10px;
-    /* box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); */
     box-shadow: 0 5px 0 #857c60;
 }
 
@@ -125,7 +124,6 @@ button:hover{
 
 button:active{
     transform: translateY(2px);
-    /* box-shadow: 0 5px 0 #aa9f7a; */
     background-color: #857c60;
 }
 
@@ -139,17 +137,14 @@ button:active{
 }
 
 #equal:active {
-    /* box-shadow: 0 5px 0 #fe9949; */
     background-color: #da843f;
 }
 
 .operator {
-    /* background-color: #da4f4f; */
     background-color: #db4b38;
     box-shadow: 0 5px 0 #c53838;
 }
 
 .operator:active {
-    /* box-shadow: 0 5px 0 #da4f4f; */
     background-color: #c53838;
 }

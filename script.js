@@ -49,7 +49,7 @@ let functions = {
     '÷': divide,
 }
 
-// /\D/.test("...".substr(-1));   32.3-1  10700/6
+//32.3-1  10700/6
 
 // Screen input panel
 let input = document.getElementById("input");
@@ -86,15 +86,15 @@ let output = document.querySelector("#output");
 
 function populateOutput(e) {
     if (/\D/.test(inputValue.slice(-1)) || !inputValue) return; //Last character(if any) must be a number before pressing equal
-    output.textContent = pemdas(inputValue);
+    output.textContent = parseFloat(pemdas(inputValue).toFixed(6)); // 7 decimal places
 }
 
 function leftToRight(subFormula) {
     // let numbers = inputValue.replace(/[^\d]/g, " ").split(" ");
     let numbers = subFormula.split(/[^\d.]/g).map(Number);
-    console.log(numbers);
+    // console.log(numbers);
     let operaciones = subFormula.replace(/[\d.]/g, '').split('');
-    console.log(operaciones);
+    // console.log(operaciones);
     operaciones.unshift('+'); //The following reduce method will always SUM(+) 0 to the first number
     let result = numbers.reduce((acc, current, idx) => {
         return operate(functions[operaciones[idx]], acc, current);
@@ -102,18 +102,20 @@ function leftToRight(subFormula) {
     return result;
 }
 
-function pemdas(inputValue) {                          //"3×2÷6+4÷2×3-1×1" inputValue example.
+function pemdas(inputValue) {                            //"3×2÷6+4÷2×3-1×1" inputValue example.
     const plusAndMinus = /([-+])/g;
 
-    let highPriority = inputValue.split(plusAndMinus); //["3×2÷6" ,"+" ,"4÷2×3" ,"-" ,"1×1"]  
+    let highPriority = inputValue.split(plusAndMinus);   //["3×2÷6" ,"+" ,"4÷2×3" ,"-" ,"1×1"]  
 
     let highPResults = highPriority.map(formula => {
         if (formula == "+" || formula == "-") return formula;
         else return leftToRight(formula);
-    });                                                //[ 1, "+", 6, "-", 1 ]
+    });                                                  //[ 1, "+", 6, "-", 1 ]
     
-    let finalFormula = highPResults.join('');          //"1+6-1"
-    let finalResult = leftToRight(finalFormula);       //6
+    if(highPResults.includes(Infinity) || highPResults.includes(NaN)) return "ERROR"; //Division by 0 exception
+
+    let finalFormula = highPResults.join('');            //"1+6-1"
+    let finalResult = leftToRight(finalFormula);         //6
     return finalResult;
 }
 
@@ -141,12 +143,12 @@ let ans = document.getElementById("ans");
 ans.addEventListener('click', answer);
 
 function answer(e) {
-    if(!output.textContent) return; //There must be a displayed output to retrieve as an 'ans'
+    if(!output.textContent || output.textContent == "ERROR") return; //There must be a displayed output other than "ERROR" to retrieve as an 'ans'
     inputValue = output.textContent;
     populateInput(e);
 }
 
-
+//Keyboard events
 window.addEventListener('keydown', keyHandler);
 function keyHandler(e) {
     //console.log(e);
