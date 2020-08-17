@@ -7,7 +7,10 @@ body {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    background: #c01600;
+    /* background: #c01600; */
+    /* background: rgb(255, 94, 94); */
+    background: #F6A97D;
+    font-family: sans-serif;
 }
 
 #wrapper {
@@ -33,18 +36,19 @@ body {
     z-index: -100;
 }
 
-#printer{
+#solarPanel{
     width: 300px;
     height: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
-    background-color: rgba(212, 186, 71, 0.705);
+    /* background-color: rgba(212, 186, 71, 0.705); */
+    background-color: rgb(224, 205, 133);
     border: solid 1px rgb(184, 181, 181);
     box-shadow: inset 0px 2px 0 rgba(0, 0, 0, 0.4);
     border-radius: 15px;
 }
 
-#printer div {
+#solarPanel div {
     border-right: 2px solid rgba(158, 137, 41, 0.904);
 }
 
@@ -67,6 +71,7 @@ body {
     padding-top: 0.7rem;
     height: 3rem;
     text-align: right;
+    word-wrap: break-word;
 }
 
 #output {
@@ -93,6 +98,7 @@ body {
 
 
 button{
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +111,8 @@ button{
     font-weight: bold;
     color: #eaeed7;
     margin: 10px;
-    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); */
+    box-shadow: 0 5px 0 #857c60;
 }
 
 #ans {
@@ -113,12 +120,13 @@ button{
 }
 
 button:hover{
-    filter: brightness(1.1)
+    filter: brightness(1.1);
 }
 
 button:active{
     transform: translateY(2px);
-    box-shadow: 0 5px 0 #aa9f7a;
+    /* box-shadow: 0 5px 0 #aa9f7a; */
+    background-color: #857c60;
 }
 
 #equal {
@@ -127,16 +135,21 @@ button:active{
     width: 120px;
     border-radius: 15px;
     padding: 0px;
+    box-shadow: 0 5px 0 #da843f;
 }
 
 #equal:active {
-    box-shadow: 0 5px 0 #fe9949;
+    /* box-shadow: 0 5px 0 #fe9949; */
+    background-color: #da843f;
 }
 
 .operator {
-    background-color: #da4f4f;
+    /* background-color: #da4f4f; */
+    background-color: #db4b38;
+    box-shadow: 0 5px 0 #c53838;
 }
 
 .operator:active {
-    box-shadow: 0 5px 0 #da4f4f;
+    /* box-shadow: 0 5px 0 #da4f4f; */
+    background-color: #c53838;
 }
